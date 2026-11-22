@@ -167,7 +167,7 @@ export function perfilesDemo(): Perfil[] {
       demo: true,
       citas,
       pesos,
-      patadas: semanas >= 20 ? [{ fecha: sumarDias(h, -1).toISOString(), patadas: 10, minutos: 22 + i }] : [],
+      patadas: semanas >= 20 ? [{ fecha: new Date(sumarDias(h, -1).setHours(20, 15)).toISOString(), patadas: 10, minutos: 22 + i }] : [],
       notas: [],
     };
   });

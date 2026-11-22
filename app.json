@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Micigoto",
+    "slug": "micigoto",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#FFF7F3",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFE4EA"
+    },
+    "android": {
+      "package": "com.andresaurio5.micigoto",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFD1DC",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "permissions": ["android.permission.POST_NOTIFICATIONS", "android.permission.SCHEDULE_EXACT_ALARM", "android.permission.VIBRATE"],
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#F07A93"
+        }
+      ],
+      "expo-font"
+    ],
+    "scheme": "micigoto"
+  }
+}
