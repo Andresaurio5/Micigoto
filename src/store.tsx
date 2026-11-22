@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Perfil, perfilesDemo } from './logic';
+import { refrescarWidget } from './widget/tarea';
 
 const CLAVE = 'micigoto:v1';
 
-type Datos = { perfiles: Perfil[]; activoId: string | null };
+type Datos = { perfiles: Perfil[]; activoId: string | null; ultimoId?: string | null };
 
 type Ctx = {
   listo: boolean;
@@ -40,10 +41,13 @@ export function ProveedorDatos({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (listo) AsyncStorage.setItem(CLAVE, JSON.stringify(datos)).catch(() => {});
+    if (!listo) return;
+    AsyncStorage.setItem(CLAVE, JSON.stringify(datos))
+      .catch(() => {})
+      .finally(() => refrescarWidget(datos.perfiles.find((p) => p.id === (datos.activoId ?? datos.ultimoId)) ?? null));
   }, [datos, listo]);
 
-  const elegir = useCallback((id: string | null) => setDatos((d) => ({ ...d, activoId: id })), []);
+  const elegir = useCallback((id: string | null) => setDatos((d) => ({ ...d, activoId: id, ultimoId: id ?? d.ultimoId })), []);
 
   const guardarPerfil = useCallback((p: Perfil) => {
     setDatos((d) => {
@@ -51,6 +55,7 @@ export function ProveedorDatos({ children }: { children: React.ReactNode }) {
       return {
         perfiles: existe ? d.perfiles.map((x) => (x.id === p.id ? p : x)) : [...d.perfiles, p],
         activoId: p.id,
+        ultimoId: p.id,
       };
     });
   }, []);

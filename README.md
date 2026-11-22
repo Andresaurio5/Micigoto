@@ -11,6 +11,7 @@ App Android para seguir el embarazo semana a semana.
 - **Fecha de la última menstruación** (o fecha de parto si ya la sabes) para calcular todo.
 - **Citas** con el ginecólogo, controles prenatales, ecografías y laboratorio, con recordatorios un día antes y 2 horas antes. Incluye un plan de controles sugerido.
 - **Diario**: contador de pataditas con cronómetro, gráfico de peso y notas de cómo te sientes.
+- **Widget para la pantalla de inicio** del celular (mantén presionada la pantalla → Widgets → Micigoto): muestra al bebé de la semana, la fruta, la barra de progreso y los días que faltan. Se actualiza solo.
 - **9 perfiles de prueba**, uno por cada mes de embarazo, y se pueden crear perfiles propios.
 
 ## Tecnología
